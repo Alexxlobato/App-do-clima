@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estação Clima</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="weather-container">
+        <h1 class="app-title" >Estação Clima</h1>
+        <!-- AQUI ESTÁ A CORREÇÃO: Envolvendo o input e o botão -->
+        <div class="search-box">
+            <input id="cityInput" type="text" placeholder="Digite uma cidade...">
+            <button id="botaoBuscar">
+                <img src="./assets/lupa.svg" alt="Lupa"> Buscar
+            </button>
+        </div>
+        
+        <div id="resultArea">
+            <!-- O JavaScript preencherá os dados aqui dentro -->
+        </div>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>
