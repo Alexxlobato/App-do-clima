@@ -25,7 +25,7 @@ async function buscarClima() {
     resultado.style.color = "black";
 
     try {
-        const urlGeocoding = `https://geocoding-api.open-meteo.com/v1/search?name=${cidade}&count=1`;
+        const urlGeocoding = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(cidade)}&count=1`;
         const dados = await buscarJson(urlGeocoding)
 
         if (!dados.results || dados.results.length === 0) {
@@ -47,15 +47,13 @@ async function buscarClima() {
 
 resultado.innerHTML = `
     <h2>${cidadeNome}</h2>
+    <hr>
     <p><strong>Latitude:</strong> ${lat}</p>
     <p><strong>Longitude:</strong> ${lon}</p>
     <p><strong>Temperatura:</strong> ${temp} ${uniTemp}</p>
     <p><strong>Umidade:</strong> ${umid} ${uniUmid}</p>
     <p><strong>Vento:</strong> ${vento} ${uniVento}</p>
 `;
-
-    input.value = "";
-    input.focus();
 
     } catch (erro) {
         resultado.innerHTML = `<p style="color: red;">Erro: ${erro.message}</p>`;
@@ -65,8 +63,9 @@ resultado.innerHTML = `
     input.focus();
 }
 
-botao.addEventListener("click", buscarClima);
 
+// Event Listeners
+botao.addEventListener("click", buscarClima);
 input.addEventListener("keyup", (evento) => {
     if (evento.key === "Enter") {
         buscarClima();
